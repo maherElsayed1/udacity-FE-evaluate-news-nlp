@@ -7,12 +7,16 @@ function handleSubmit(event) {
     console.log("::: Form Submitted :::");
 
     if (Client.validURL(formText)) {
+        document.getElementById("loading").innerHTML = "Loading......";
         postData("http://localhost:8080/myMeaningCloud", { url: formText }).then(function (res) {
-            document.getElementById("polarity").innerHTML = `Polarity: ${res.score_tag}`;
-            document.getElementById("agreement").innerHTML = `Agreement: ${res.agreement}`;
-            document.getElementById("subjectivity").innerHTML = `Subjectivity: ${res.subjectivity}`;
-            document.getElementById("confidence").innerHTML = `Confidence: ${res.confidence}`;
-            document.getElementById("irony").innerHTML = `Irony: ${res.irony}`;
+            if (res) {
+                document.getElementById("polarity").innerHTML = `Polarity: ${res.score_tag}`;
+                document.getElementById("agreement").innerHTML = `Agreement: ${res.agreement}`;
+                document.getElementById("subjectivity").innerHTML = `Subjectivity: ${res.subjectivity}`;
+                document.getElementById("confidence").innerHTML = `Confidence: ${res.confidence}`;
+                document.getElementById("irony").innerHTML = `Irony: ${res.irony}`;
+                document.getElementById("loading").innerHTML = "";
+            }
         });
     } else {
         alert("Please Enter A Valid URL");
