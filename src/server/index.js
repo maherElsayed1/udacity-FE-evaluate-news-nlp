@@ -41,7 +41,7 @@ app.get("/test", function (req, res) {
 });
 
 // Meaning Cloud Post Route
-app.post("myMeaningCloud", handleMeaningCloud);
+app.post("/my-meaning-cloud", handleMeaningCloud);
 async function handleMeaningCloud(req, res) {
     const baseURL = `https://api.meaningcloud.com/sentiment-2.1?key=${apiKey}&url=${req.body.url}&lang=en`;
 

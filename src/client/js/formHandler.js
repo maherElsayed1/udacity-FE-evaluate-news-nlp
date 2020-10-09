@@ -6,9 +6,9 @@ function handleSubmit(event) {
 
     console.log("::: Form Submitted :::");
 
-    if (Client.validURL(formText)) {
+    if (Client.checkURL(formText)) {
         document.getElementById("loading").innerHTML = "Loading......";
-        postData("http://localhost:8080/myMeaningCloud", { url: formText }).then(function (res) {
+        postData("http://localhost:8080/my-meaning-cloud", { url: formText }).then(function (res) {
             if (res) {
                 document.getElementById("polarity").innerHTML = `Polarity: ${res.score_tag}`;
                 document.getElementById("agreement").innerHTML = `Agreement: ${res.agreement}`;
